@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Edit Ninja Information</title>
+</head>
+<body>
+    <form action="/update/{{ninja['id']}}" method="post" class="p-3 col-4 mx-auto my-5 bg-dark text-light">
+        <h2 class="text-center text-primary">Edit {{ninja['first_name']}}:</h2>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Flash AHHHHHHH!!!!</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        <div class="form-group">
+            <label for="first_name">Ninja First Name:</label>
+            <input type="text" name="first_name" id="first_name" class="form-control" value="{{ninja['first_name']}}">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Ninja Last Name:</label>
+            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ninja['last_name']}}">
+        </div>
+        <div class="form-group">
+            <label for="meat">Age:</label>
+            <input type="text" name="age" id="age" class="form-control" value="{{ninja['age']}}">
+        </div>
+        <input type="submit" value="Update Ninja" class="btn btn-primary btn-outline-dark">
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Ninja Sign Up</title>
+</head>
+<body>
+    <a href="/roster">View All ninjas</a>
+    <form action="/createninja" method="post" class="p-3 col-4 mx-auto my-5 bg-dark text-light">
+        <h2 class="text-center text-primary">Add Ninja:</h2>
+    
+        <div class="form-group">
+            <label for="first_name">Ninja First Name:</label>
+            <input type="text" name="first_name" id="first_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Ninja Last Name:</label>
+            <input type="text" name="last_name" id="last_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" name="age" id="age" class="form-control">
+        </div>
+        <input type="submit" value="Enroll Ninja" class="btn btn-primary btn-outline-dark">
+
+        <select name="dojo_id">
+            {% for dojo in all_dojos %}
+            <option value={{dojo.id}}>{{dojo.name}}</option>
+            {% endfor %}
+        </select>
+        <a href="/dojos" class="btn btn-info">Home</a>
+    </form>
+    {% for dojo in all_dojos %}
+    <a href="/dojoshow/{{ dojo.id }}">{{ dojo.name }}</a>
+    {% endfor %}
+</body>
+</html>
