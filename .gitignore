@@ -1,4 +1,6 @@
-/flask_app
-/Pipfile
+
+
 /Pipfile.lock
-/server.py
+
+/env.py
+.env
